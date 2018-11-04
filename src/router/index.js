@@ -1,0 +1,28 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import Welcome from '@/components/Welcome'
+import About from '@/components/About'
+import Page404 from '@/components/404'
+
+Vue.use(Router)
+
+export default new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      name: 'Welcome',
+      component: Welcome
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
+    },
+    {
+      path: '',
+      name: '404',
+      component: Page404
+    }
+  ]
+})
