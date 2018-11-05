@@ -8,8 +8,7 @@
           </router-link>
         </div>
         </el-col>
-        <el-col :span="10"><div class="app-header-bg">a</div></el-col>
-        <el-col :span="12">
+        <el-col :span="22">
           <div class="app-header-options">
             <ul>
               <li class="app-header-options-search">
@@ -28,7 +27,7 @@
                   <span class="el-dropdown-link">
                      Contact Us<i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
-                  <el-dropdown-menu slot="dropdown" style="font-family: 'Stylus BT'">
+                  <el-dropdown-menu slot="dropdown" class="el-dropdown-menu">
                     <el-dropdown-item><i class="el-icon-message"></i> cesoygf@sysu.edu.cn</el-dropdown-item>
                     <el-dropdown-item><i class="el-icon-phone-outline"></i> (020) 84110953</el-dropdown-item>
                     <el-dropdown-item><i class="el-icon-location-outline"></i> Find Us here!</el-dropdown-item>
@@ -60,9 +59,12 @@
       </el-submenu>
       <el-submenu index="3">
         <template slot="title">实验室成员</template>
-        <el-menu-item index="3-1">欧阳钢锋教授</el-menu-item>
-        <el-menu-item index="3-2">副研究员与博士后</el-menu-item>
-        <el-menu-item index="3-3">全日制博士生</el-menu-item>
+        <el-menu-item index="3-1">
+          <router-link to="members">欧阳钢锋教授</router-link>
+        </el-menu-item>
+        <el-menu-item index="3-2">朱芳教授</el-menu-item>
+        <el-menu-item index="3-3">副研究员与博士后</el-menu-item>
+        <el-menu-item index="3-4">全日制在读博士生</el-menu-item>
       </el-submenu>
       <el-menu-item index="4" class="extech">
         <router-link to="/extech">ExTech 2018 Guangzhou</router-link>
@@ -82,7 +84,8 @@
     <div class="app-footer">
       <el-row class="app-footer-el-row">
         <el-col :span="8"><div class="app-footer-left">
-          <a href="http://www.xmol.com/group/spme">x-mol</a>
+          <a href="http://www.xmol.com/group/spme" target="_blank">
+            <img src="./assets/xmol.png" style="width: 20%; height: 20%"/></a>
         </div></el-col>
         <el-col :span="8"><div class="app-footer-middle">
           <p>© Prof. Ouyang's SPME lab 2018 </p>
@@ -182,7 +185,7 @@ a {
   text-decoration: none;
 }
 body {
-  background: #f0f2f5;
+  background: #fff;
 }
 .app-header {
   padding-top: 20px;
@@ -198,12 +201,7 @@ body {
 .app-header-logo {
   /*float: left;*/
   width: 50px;
-
-}
-.app-header-bg {
-  font-family: "Stylus BT";
-  font-size: 2rem;
-  font-weight: bold;
+  margin-left: 1em;
 }
 .app-header-options {
   float: right;
@@ -217,17 +215,23 @@ body {
 }
 .el-dropdown-link {
   color: beige;
-  font-family: "Stylus BT";
+  font-family: Verdana,sans-serif;
   font-size: 1rem;
   padding-left: .3rem;
+}
+.el-dropdown-menu {
+  font-family: Verdana,sans-serif;
 }
 
 .app-menu {
   padding-left: 1rem;
 }
 .extech {
-  font-family: "Stylus BT";
+  font-family: Verdana,sans-serif;
   font-weight: bold;
+}
+.app-content {
+  min-height: 600px;
 }
 
 .app-footer {
@@ -236,7 +240,7 @@ body {
   height: 60px;
   line-height: 60px;
   width: 100%;
-  font-family: "Stylus BT";
+  font-family: Verdana,sans-serif;
 }
 .app-footer a {
   color: black;
