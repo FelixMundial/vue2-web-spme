@@ -1,40 +1,127 @@
 <template>
   <div id="app">
     <div class="app-header">
-      <div class="app-header-inner">
-        <router-link to="/">
-          <img class="app-header-logo" src="./assets/logo.png">
-        </router-link>
-        <div class="app-header-nav">
-          <ul class="app-header-nav-list">
-            <li>登录</li>
-            <li class="nav-separator">|</li>
-            <li>注册</li>
-            <li class="nav-separator">|</li>
-            <li><router-link to="about">关于</router-link></li>
-            <li class="nav-separator">|</li>
-          </ul>
+      <el-row class="app-header-el-row">
+        <el-col :span="2"><div class="app-header-logo-area">
+          <router-link to="/" @click="resetMenu">
+            <img class="app-header-logo" src="./assets/logo.png">
+          </router-link>
         </div>
-      </div>
+        </el-col>
+        <el-col :span="10"><div class="app-header-bg">a</div></el-col>
+        <el-col :span="12">
+          <div class="app-header-options">
+            <ul>
+              <li class="app-header-options-search">
+                <el-input placeholder="请输入内容" size="medium" prefix-icon="el-icon-search" clearable autosize
+                          v-model="searchedText">
+                </el-input>
+              </li>
+              <li class="nav-separator">|</li>
+              <li><router-link to="about">
+                <i class="el-icon-setting"></i> 实验室管理
+              </router-link></li>
+              <li class="nav-separator">|</li>
+              <li><router-link to="about">
+                <i class="el-icon-question"></i>
+                <el-dropdown>
+                  <span class="el-dropdown-link">
+                     Contact Us<i class="el-icon-arrow-down el-icon--right"></i>
+                  </span>
+                  <el-dropdown-menu slot="dropdown" style="font-family: 'Stylus BT'">
+                    <el-dropdown-item><i class="el-icon-message"></i> cesoygf@sysu.edu.cn</el-dropdown-item>
+                    <el-dropdown-item><i class="el-icon-phone-outline"></i> (020) 84110953</el-dropdown-item>
+                    <el-dropdown-item><i class="el-icon-location-outline"></i> Find Us here!</el-dropdown-item>
+                  </el-dropdown-menu>
+                </el-dropdown>
+              </router-link></li>
+            </ul>
+          </div>
+        </el-col>
+      </el-row>
     </div>
+
+    <el-menu class="app-menu" mode="horizontal" unique-opened
+      :default-active="activeMenuIndex" @select="handleSelect"
+      background-color="#2F4F4F" text-color="#fff" active-text-color="#ffd04b">
+      <el-menu-item index="1">
+        <router-link to="/">实验室概况</router-link>
+      </el-menu-item>
+      <el-submenu index="2">
+        <template slot="title">科研成果</template>
+        <el-menu-item index="2-1">论文与专利概况</el-menu-item>
+        <el-menu-item index="2-2">2018</el-menu-item>
+        <el-submenu index="2-3">
+          <template slot="title">研究方向分类</template>
+          <el-menu-item index="2-3-1">固相微萃取技术</el-menu-item>
+          <el-menu-item index="2-3-2">环境分析化学</el-menu-item>
+          <el-menu-item index="2-3-3">材料分析化学</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+      <el-submenu index="3">
+        <template slot="title">实验室成员</template>
+        <el-menu-item index="3-1">欧阳钢锋教授</el-menu-item>
+        <el-menu-item index="3-2">副研究员与博士后</el-menu-item>
+        <el-menu-item index="3-3">全日制博士生</el-menu-item>
+      </el-submenu>
+      <el-menu-item index="4" class="extech">
+        <router-link to="/extech">ExTech 2018 Guangzhou</router-link>
+      </el-menu-item>
+      <el-menu-item index="5" disabled>
+        <router-link to="/404">SPME技术研讨会</router-link>
+      </el-menu-item>
+      <el-menu-item index="6">
+        <router-link to="about"><i class="el-icon-info"></i> About Us</router-link>
+      </el-menu-item>
+    </el-menu>
+
     <div class="app-content">
       <keep-alive><router-view/></keep-alive>
     </div>
+
     <div class="app-footer">
-      <p>© Prof. Ouyang's SPME lab 2018 </p>
+      <el-row class="app-footer-el-row">
+        <el-col :span="8"><div class="app-footer-left">
+          <a href="http://www.xmol.com/group/spme">x-mol</a>
+        </div></el-col>
+        <el-col :span="8"><div class="app-footer-middle">
+          <p>© Prof. Ouyang's SPME lab 2018 </p>
+        </div></el-col>
+        <el-col :span="8"><div class="app-footer-right">
+          <router-link to="about">
+            <i class="el-icon-setting"></i> 内容管理
+          </router-link>
+        </div></el-col>
+      </el-row>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      activeMenuIndex: '1',
+      searchedText: '',
+      isAdmin: false,
+      visible: false
+    }
+  },
+  methods: {
+    handleSelect (key, keyPath) {
+      console.log(key, keyPath)
+    },
+    resetMenu () {
+      this.activeMenuIndex = '1'
+    }
+  }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Verdana, sans-serif;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -65,6 +152,7 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  font-size: 1em !important;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -95,44 +183,68 @@ a {
 }
 body {
   background: #f0f2f5;
-  font-size: 16px;
 }
 .app-header {
-  background: darkslategrey;
+  padding-top: 20px;
+  background: #2F4F4F;
   color: azure;
-  height: 100px;
-  line-height: 100px;
+  height: 80px;
+  line-height: 65px;
   width: 100%;
-  margin-bottom: 30px;
+}
+.app-header a {
+  color: lightgreen;
 }
 .app-header-logo {
-  float: left;
+  /*float: left;*/
   width: 50px;
-  margin: 20px;
+
 }
-.app-header-inner {
-  width: 1400px;
-  margin: 0 auto;
+.app-header-bg {
+  font-family: "Stylus BT";
+  font-size: 2rem;
+  font-weight: bold;
 }
-.app-header-nav {
+.app-header-options {
   float: right;
+  margin-right: 1.2rem;
 }
-.app-header-nav ul {
-  overflow: hidden;
-}
-.app-header-nav li {
+.app-header-options li {
   cursor: pointer;
-  float: left;
 }
 .nav-separator {
   padding: 0 10px;
 }
+.el-dropdown-link {
+  color: beige;
+  font-family: "Stylus BT";
+  font-size: 1rem;
+  padding-left: .3rem;
+}
+
+.app-menu {
+  padding-left: 1rem;
+}
+.extech {
+  font-family: "Stylus BT";
+  font-weight: bold;
+}
+
 .app-footer {
+  background: lightgray;
   text-align: center;
   height: 60px;
   line-height: 60px;
   width: 100%;
-  background: lightgray;
-  margin-top: 30px;
+  font-family: "Stylus BT";
+}
+.app-footer a {
+  color: black;
+}
+.app-footer-left {
+  background: beige;
+}
+.app-footer-right {
+  background: lightgreen;
 }
 </style>
