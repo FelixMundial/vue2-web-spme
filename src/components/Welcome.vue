@@ -4,7 +4,9 @@
       <swiper :options="swiperOption" ref="mySwiper">
         <!-- slides -->
         <swiper-slide v-for="item in imgLibrary" :key="item">
-          <img :src="item.src" width="100%" class="swiper-slide-img"/>
+          <router-link to="/publications">
+            <img :src="item.src" width="100%" class="swiper-slide-img"/>
+          </router-link>
           <h1 class="swiper-slide-title">{{ item.title }}</h1>
         </swiper-slide>
       </swiper>
@@ -38,7 +40,7 @@
             <span slot="title">近期提醒</span>
             <i class="el-icon-date"></i>
           </el-menu-item>
-          <el-menu-item index="3" disabled>
+          <el-menu-item index="3">
             <span slot="title">导航三</span>
             <i class="el-icon-loading"></i>
           </el-menu-item>
@@ -67,7 +69,7 @@
       </el-col>
       <el-col :span="collapseSpanRight" id="welcome-reminders" v-if="secBEnabled">
         <el-collapse v-model="activeNames" @change="handleChange">
-          <el-badge value="new" class="item" style="margin-top: 1rem">
+          <el-badge is-dot value="new" class="item" style="margin-top: 1rem">
             <el-tag>近期提醒</el-tag>
           </el-badge>
           <el-collapse-item title="一致性 Consistency" name="1">

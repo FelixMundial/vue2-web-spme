@@ -2,9 +2,24 @@
   <div class="extech-container">
     <el-row>
       <el-button class="extech-header" type="success" plain>
-        报名入口 <i class="el-icon-success"></i> Register Now</el-button>
-      <el-button class="extech-header" type="info" plain>
-        关于ExTech <i class="el-icon-question"></i> About ExTech</el-button>
+        <router-link to="/extech/register">
+          报名入口 <i class="el-icon-success"></i> Register Now
+        </router-link>
+      </el-button>
+      <el-popover placement="bottom" width="500" v-model="popoverShown">
+        <p class="extech-text-more">{{ exTechTextMore }}</p>
+        <div style="text-align: right; margin: 0">
+          <el-button size="mini" type="text" @click="popoverShown = false">返回 | return</el-button>
+          <el-button type="primary" plain size="mini" @click="popoverShown = false">
+            <router-link to="/extech/register">
+              报名入口 <i class="el-icon-success"></i> Register Now
+            </router-link>
+          </el-button>
+        </div>
+        <el-button slot="reference" class="extech-header" type="info" plain>
+          关于ExTech <i class="el-icon-question"></i> About ExTech
+        </el-button>
+      </el-popover>
     </el-row>
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
@@ -18,6 +33,13 @@
       <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
       <div class="swiper-scrollbar"   slot="scrollbar"></div>
     </swiper>
+    <el-card class="box-card">
+      <div v-for="o in 4" :key="o" class="text item">
+        {{'列表内容 ' + o }}
+      </div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    </el-card>
   </div>
 </template>
 
@@ -27,6 +49,9 @@ export default {
   name: 'ExTech',
   data () {
     return {
+      exTechTextMore: `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+`,
+      popoverShown: false,
       swiperOption: {
         pagination: {
           el: '.swiper-pagination',
@@ -82,7 +107,7 @@ export default {
 
 <style scoped>
 .extech-container {
-  background: lightgray;
+  /*background: lightgray;*/
 }
 .extech-header {
   margin: 1rem;
@@ -90,6 +115,10 @@ export default {
 .swiper-container {
   height: 600px;
   width: 100%;
+}
+.extech-text-more {
+  padding: 1rem;
+  font-size: 3rem;
 }
 .swiper-slide {
   text-align: center;
@@ -111,5 +140,10 @@ export default {
   opacity: .5;
   background: azure;
   padding: .1rem .5rem;
+}
+.box-card {
+  margin: 1rem;
+  border-radius: 5px;
+  width: 98%;
 }
 </style>
