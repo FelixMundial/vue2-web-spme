@@ -1,12 +1,12 @@
 <template>
  <div class="about-container">
    <el-tabs v-model="activeName" type="border-card">
-     <el-tab-pane label="实验室概况" name="first">
+     <el-tab-pane label="About Us | 实验室概况" name="first">
        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
      </el-tab-pane>
-     <el-tab-pane label="地理位置" name="second">
-       a
+     <el-tab-pane label="Our Whereabouts | 地理位置" name="second">
+       <div>PLACEHOLDER COMPONENT</div>
      </el-tab-pane>
    </el-tabs>
  </div>

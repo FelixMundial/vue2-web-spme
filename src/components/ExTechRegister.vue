@@ -12,8 +12,8 @@
         </div>
       </el-col>
       <el-col :span="21">
-        <h1><i class="el-icon-document"></i> | ExTech 2018 报名表</h1>
-        <el-form :model="info" :rules="rules" ref="ruleForm" label-width="12rem" class="register-form">
+        <h1><i class="el-icon-document"></i> ExTech 2018 Registration | 报名表</h1>
+        <el-form :model="info" :rules="rules" ref="ruleForm" label-width="11rem" class="register-form">
           <el-row>
             <el-col :span="6">
               <el-form-item label="请输入姓名" prop="name">

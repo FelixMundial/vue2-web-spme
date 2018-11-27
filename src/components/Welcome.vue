@@ -22,7 +22,9 @@
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-document"></i>
-              <span slot="title" style="margin-right: 2rem">近期成果</span>
+              <span slot="title" style="margin-right: 2rem">
+                <el-tag type="success">近期成果</el-tag>
+              </span>
             </template>
             <el-menu-item-group title="近期发表">
               <el-menu-item index="1-1" @click="enableSec(1)">选项1-1</el-menu-item>
@@ -37,11 +39,11 @@
             <!--</el-submenu>-->
           </el-submenu>
           <el-menu-item index="2" @click="enableSec(2)">
-            <span slot="title">近期提醒</span>
+            <span slot="title"><el-tag type="warning">近期提醒</el-tag></span>
             <i class="el-icon-date"></i>
           </el-menu-item>
           <el-menu-item index="3">
-            <span slot="title">导航三</span>
+            <span slot="title"><el-tag type="info">导航三</el-tag></span>
             <i class="el-icon-loading"></i>
           </el-menu-item>
         </el-menu>
@@ -49,8 +51,25 @@
       <el-col :span="collapseSpanRight" id="welcome-publications" v-if="secAEnabled">
         <el-collapse v-model="activeNames" @change="handleChange">
           <el-collapse-item title="一致性 Consistency" name="1">
-            <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-            <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+            <el-card class="members-intro-card">
+              <div slot="header" class="clearfix">
+                <span>欧阳钢锋教授</span>
+                <el-button style="float: right; padding: 3px 0" type="text">
+                  <i class="el-icon-message"></i> 联系方式 | Contact
+                </el-button>
+              </div>
+              <div class="publications-list">
+                <el-row>
+                  <el-col :span="8">
+                    <img src="../assets/xmol.png"/>
+                  </el-col>
+                  <el-col :span="16">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+                  </el-col>
+                </el-row>
+              </div>
+            </el-card>
           </el-collapse-item>
           <el-collapse-item title="反馈 Feedback" name="2">
             <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
@@ -70,7 +89,7 @@
       <el-col :span="collapseSpanRight" id="welcome-reminders" v-if="secBEnabled">
         <el-collapse v-model="activeNames" @change="handleChange">
           <el-badge is-dot value="new" class="item" style="margin-top: 1rem">
-            <el-tag>近期提醒</el-tag>
+            <el-tag type="warning">近期提醒</el-tag>
           </el-badge>
           <el-collapse-item title="一致性 Consistency" name="1">
             <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>

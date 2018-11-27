@@ -2,25 +2,25 @@
   <div id="app">
     <div class="app-header">
       <el-row type="flex" justify="space-between" class="app-header-el-row">
-        <el-col :span="2">
+        <el-col :span="4">
           <div class="app-header-logo-area">
             <router-link :to="{path:'/', query: {activeMenuIndex: 1}}">
-              <img class="app-header-logo" src="./assets/logo.png">
+              <img class="app-header-logo" src="./assets/spme-header.png">
             </router-link>
           </div>
         </el-col>
-        <el-col span="22">
+        <el-col span="20">
           <el-row type="flex" justify="end">
             <el-col :span="4" class="app-header-options-search">
               <el-input placeholder="请输入内容" size="medium" prefix-icon="el-icon-search" clearable autosize
                         v-model="searchedText">
               </el-input>
             </el-col>
-            <el-col :span="4">
-              <router-link to="about">
-                <i class="el-icon-setting"></i><span v-show="visibleResponsively"> 实验室管理</span>
-              </router-link>
-            </el-col>
+            <!--<el-col :span="4">-->
+              <!--<router-link to="about">-->
+                <!--<i class="el-icon-setting"></i><span v-show="visibleResponsively"> 实验室管理</span>-->
+              <!--</router-link>-->
+            <!--</el-col>-->
             <el-col :span="4">
               <router-link to="about">
                 <el-dropdown>
@@ -29,11 +29,13 @@
                     <span v-show="visibleResponsively"> Contact Us</span><i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
                   <el-dropdown-menu slot="dropdown" class="el-dropdown-menu">
-                    <el-dropdown-item><i class="el-icon-message"></i> cesoygf@sysu.edu.cn</el-dropdown-item>
-                    <el-dropdown-item divided><i class="el-icon-phone-outline"></i> (020) 84110953</el-dropdown-item>
-                    <el-dropdown-item divided>
+                    <el-dropdown-item class="el-dropdown-item"><i class="el-icon-message"></i> <el-tag type="success">cesoygf@sysu.edu.cn</el-tag></el-dropdown-item>
+                    <el-dropdown-item class="el-dropdown-item"><i class="el-icon-phone-outline"></i> <el-tag type="info">(020) 84110953</el-tag></el-dropdown-item>
+                    <el-dropdown-item class="el-dropdown-item">
                       <router-link :to="{path:'/about', query: {activeName: 'second', activeMenuIndex: 6}}">
-                        <i class="el-icon-location-outline"></i> Find Us here!
+                        <el-badge is-dot class="item">
+                          <el-button icon="el-icon-location" type="primary"> Find Us here!</el-button>
+                        </el-badge>
                       </router-link>
                     </el-dropdown-item>
                   </el-dropdown-menu>
@@ -49,21 +51,29 @@
       :default-active="activeMenuIndex" @select="handleSelect"
       background-color="#2F4F4F" text-color="#fff" active-text-color="#ffd04b">
       <el-menu-item index="1">
-        <router-link to="/">实验室概况</router-link>
+        <router-link to="/">课题组概况</router-link>
       </el-menu-item>
       <el-submenu index="2">
         <template slot="title">科研成果</template>
-        <el-menu-item index="2-1">论文与专利概况</el-menu-item>
-        <el-menu-item index="2-2"><router-link :to="{path:'/publications', query: {activeName: 'second'}}">2018</router-link></el-menu-item>
         <el-submenu index="2-3">
           <template slot="title">研究领域概述</template>
           <el-menu-item index="2-3-1">固相微萃取技术</el-menu-item>
           <el-menu-item index="2-3-2">环境分析化学</el-menu-item>
           <el-menu-item index="2-3-3">材料分析化学</el-menu-item>
         </el-submenu>
+        <el-menu-item index="2-1">
+          <router-link :to="{path:'/publications', query: {activeName: 'second'}}">
+            2018
+          </router-link>
+        </el-menu-item>
+        <el-menu-item index="2-2">
+          <router-link :to="{path:'/publications', query: {activeName: 'third'}}">
+            论文与专利
+          </router-link>
+        </el-menu-item>
       </el-submenu>
       <el-submenu index="3">
-        <template slot="title">实验室成员</template>
+        <template slot="title">课题组成员</template>
         <el-menu-item index="3-1">
           <router-link :to="{path:'/members', query: {activeName: 'first'}}">欧阳钢锋教授</router-link>
         </el-menu-item>
@@ -78,7 +88,7 @@
         <router-link to="/404">SPME技术研讨会</router-link>
       </el-menu-item>
       <el-menu-item index="6">
-        <router-link to="about"><i class="el-icon-info"></i> About Us</router-link>
+        <router-link to="/about"><i class="el-icon-info"></i> About Us</router-link>
       </el-menu-item>
     </el-menu>
 
@@ -212,8 +222,9 @@ body {
 }
 .app-header-logo {
   /*float: left;*/
-  width: 50px;
-  margin-left: 1em;
+  width: 150%;
+  height: 150%;
+  margin: 0 2rem;
 }
 .nav-separator {
   padding: 0 10px;
@@ -226,6 +237,9 @@ body {
 }
 .el-dropdown-menu {
   font-family: Verdana,sans-serif;
+}
+.el-dropdown-item {
+  padding: 1rem;
 }
 
 .app-menu {
